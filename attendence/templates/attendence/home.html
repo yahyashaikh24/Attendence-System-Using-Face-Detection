@@ -1,0 +1,30 @@
+{% extends 'attendence/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>{{ user.first_name }}</h1>
+{% if user.is_authenticated %}
+<p>{{ request.session.login_info.login }}</p>
+<p>{{ request.session.login_info.subject }}</p>
+<p>{{ request.session.login_info.class }}</p>
+
+	<!-- {% if request.user.is_superuser %} -->
+	<!-- {% endif %} -->
+	<form method="post">
+		{% csrf_token %}
+		<input type="hidden" name="id" value="{{ request.session.login_info }}">
+		<button type="submit" name='scan' class="btn btn-primary btn-lg">Scan</button>
+	</form>
+	{% if scan.scan %}
+	<div class="text-center">
+		<img class="img-responsive" src="{% url 'live' %}" alt="Chania" width="460" height="345">
+		<a class="link-success"  href="{% url 'table' %}">Details</a>
+	</div>
+	{% else %}
+	<div class="text-center">
+		<img class="img-responsive" src="{% static 'attendence/images/black.jpg' %}" alt="Chania" width="460" height="345">
+	</div>
+	{% endif %}
+{% endif %}
+
+{% endblock %}

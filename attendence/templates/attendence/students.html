@@ -1,0 +1,50 @@
+{% extends 'attendence/base.html' %}
+{% load static %}
+{% block content %}
+<h1>{{ user.first_name }}</h1>
+{% if user.is_authenticated %}
+<p>{{ request.session.login_info.login }}</p>
+<p>{{ request.session.login_info.subject }}</p>
+<p>{{ request.session.login_info.class }}</p>
+
+<h2 class ="text-center"> Student's Deatils</h2>
+
+<div class = "col-md-6 offset-md-3"> 
+	<form method ="POST">
+		
+		{% csrf_token %}
+
+	  <div class="form-group">
+
+	    <input type="text" class="form-control" placeholder="Enter First Name" name = "first_name" required>
+
+	  </div>
+      <div class="form-group">
+
+	    <input type="text" class="form-control" placeholder="Enter Last Name" name = "last_name" required>
+
+	  </div>
+	  <div class="form-group">
+
+	    <input type="number" class="form-control" placeholder="Roll Number" name = "roll" required>
+
+	  </div>
+
+      <div class="form-group">
+
+	    <select class="form-select" aria-label="Default select example" name="std">
+			<option selected>MSC IT</option>
+			<option value="1">BSC IT</option>
+			<option value="2">Junoir College</option>
+			<option value="3">Diploma</option>
+		  </select>
+
+	  </div>
+      
+	  <button type="submit" class="btn btn-secondary">Add Student</button>
+	</form>
+
+    </div>
+
+{% endif %}
+{% endblock %}

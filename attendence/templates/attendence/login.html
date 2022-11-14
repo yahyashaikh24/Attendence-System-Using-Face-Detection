@@ -1,0 +1,49 @@
+{% extends 'attendence/base.html' %}
+
+{% block content %}
+
+<h2 class ="text-center"> Login</h2>
+
+<div class = "col-md-6 offset-md-3"> 
+	<form method ="POST">
+		
+		{% csrf_token %}
+
+	  <div class="form-group">
+
+	    <input type="text" class="form-control" placeholder="Enter Username" name = "username">
+
+	  </div>
+	  <div class="form-group">
+
+	    <input type="password" class="form-control"  placeholder="Enter Password" name="password"> 
+	  </div>
+	 
+	  <div class="form-group">
+
+	    <select class="form-select" aria-label="Default select example" name="std">
+			<option selected>MSC IT</option>
+			<option value="1">BSC IT</option>
+			<option value="2">Junior College</option>
+			<option value="3">Diploma</option>
+		  </select>
+
+	  </div>
+
+	  <div class="form-group">
+
+	    <select class="form-select" aria-label="Default select example" name="sub">
+			<option selected>Bloackchain</option>
+			<option value="Deep Learning">Deep Learning</option>
+			<option value="Cuber F">Cuber F</option>
+			<option value="HCL">HCL</option>
+		  </select>
+
+	  </div>
+
+	  <button type="submit" class="btn btn-secondary">Login</button>
+	</form>
+
+</div>
+
+{% endblock %}
